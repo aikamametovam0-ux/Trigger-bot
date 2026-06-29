@@ -1,6 +1,5 @@
 from typing import cast
-from os import getenv
+import os
 
 
-BOT_TOKEN = cast(str, getenv('BOT_TOKEN'))
-assert BOT_TOKEN is not None
+BOT_TOKEN = os.getenv("BOT_TOKEN")

@@ -8,7 +8,7 @@ from aiogram.utils.i18n import gettext as _
 default_router = Router()
 
 
-@default_router.message()
-async def default_handler(message: Message) -> None:
-    await message.answer(_('What are you talking about?'),
-                         reply_markup=get_menu_kb()) 
+# @default_router.message()
+# async def default_handler(message: Message) -> None:
+#     await message.answer(_('What are you talking about?'),
+#                          reply_markup=get_menu_kb())

@@ -1,0 +1,36 @@
+import os
+import json
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, ContextTypes, filters
+
+TOKEN = os.getenv("BOT_TOKEN")
+
+TRIGGERS_FILE = "triggers.json"
+
+
+def load_triggers():
+    if not os.path.exists(TRIGGERS_FILE):
+        return {}
+    with open(TRIGGERS_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_triggers(data):
+    with open(TRIGGERS_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+triggers = load_triggers()
+
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🤖 Бот запущен!\n\n"
+        "Команды:\n"
+        "/set_trigger слово @юзер — добавить триггер\n"
+        "/del_trigger слово — удалить\n"
+        "/triggers — список"
+    )
+
+
+async def set_trigger(update: Update, context:

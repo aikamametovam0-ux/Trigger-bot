@@ -1,3 +1,4 @@
+print("BOT STARTING...")
 import os
 from handlers import register_handlers
 

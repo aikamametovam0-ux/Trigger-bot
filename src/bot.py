@@ -1,3 +1,4 @@
+import os
 from handlers import register_handlers
 
 from aiogram import Dispatcher, Bot
@@ -8,6 +9,12 @@ from aiogram.utils.i18n.middleware import ConstI18nMiddleware
 from pathlib import Path
 from loguru import logger
 from dotenv import load_dotenv
+
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN is missing in Railway environment variables")
 
 
 def main() -> None:
